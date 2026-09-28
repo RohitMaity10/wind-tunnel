@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AeroFlow - Aerodynamic Wind Tunnel & Vortex Simulation</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="tunnel-container">
+    <canvas id="tunnel-canvas"></canvas>
+
+    <!-- Top Telemetry HUD -->
+    <header class="hud-top">
+      <div class="brand">
+        <span class="aero-pulse"></span>
+        <h1>AEROFLOW // <span class="sub">VORTEX TUNNEL</span></h1>
+      </div>
+      <div class="telemetry">
+        <span>Airspeed: <strong id="speed-readout">45 m/s</strong></span>
+        <span>Reynolds: <strong id="re-readout">Re 12,400</strong></span>
+        <span>Particles: <strong id="particle-readout">2,400</strong></span>
+      </div>
+    </header>
+
+    <!-- Interactive Control Deck -->
+    <aside class="control-deck">
+      <div class="deck-group">
+        <label>OBSTACLE PRESETS</label>
+        <div class="preset-grid">
+          <button class="btn preset-btn active" data-preset="airfoil">NACA Airfoil</button>
+          <button class="btn preset-btn" data-preset="cylinder">Cylinder (Vortex)</button>
+          <button class="btn preset-btn" data-preset="car">Sports Car</button>
+          <button class="btn preset-btn" data-preset="plate">Flat Plate (Drag)</button>
+        </div>
+      </div>
+
+      <div class="deck-group">
+        <div class="label-row">
+          <label for="speed-slider">Wind Tunnel Airspeed</label>
+          <span class="badge" id="speed-badge">45 m/s</span>
+        </div>
+        <input type="range" id="speed-slider" min="15" max="90" step="5" value="45" />
+      </div>
+
+      <div class="deck-group">
+        <div class="label-row">
+          <label for="aoa-slider">Angle of Attack (AoA)</label>
+          <span class="badge" id="aoa-badge">6°</span>
+        </div>
+        <input type="range" id="aoa-slider" min="-25" max="35" step="1" value="6" />
+      </div>
+
+      <div class="deck-group">
+        <label>VISUALIZATION MODE</label>
+        <div class="mode-grid">
+          <button class="btn mode-btn active" data-mode="smoke">Neon Smoke</button>
+          <button class="btn mode-btn" data-mode="vectors">Velocity Vectors</button>
+          <button class="btn mode-btn" data-mode="pressure">Pressure Heatmap</button>
+        </div>
+      </div>
+
+      <div class="deck-group actions">
+        <button class="btn danger" id="clear-custom-btn">↺ Reset Obstacle</button>
+      </div>
+
+      <footer class="deck-hint">
+        <p>🖱️ <strong>Draw / Drag:</strong> Click and drag anywhere to draw custom aerodynamic barriers or move the obstacle. Watch boundary layer separation and von Kármán vortex shedding in real time.</p>
+      </footer>
+    </aside>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
